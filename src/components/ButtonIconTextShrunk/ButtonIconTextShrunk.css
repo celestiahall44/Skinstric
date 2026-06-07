@@ -1,0 +1,49 @@
+.button-icon-text-shrunk {
+	position: absolute;
+	top: 458px;
+	left: 32px;
+	width: 150px;
+	height: 44px;
+	opacity: 1;
+	transform: rotate(0deg);
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 16px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.button-icon-text-shrunk-label {
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: 0;
+	text-transform: uppercase;
+	color: #1A1B1C;
+	white-space: nowrap;
+}
+
+.button-icon-text-shrunk-icon {
+	width: 28px;
+	height: 28px;
+	border: 2px solid #1A1B1C;
+	transform: rotate(45deg);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.button-icon-text-shrunk-triangle {
+	width: 0;
+	height: 0;
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 6px solid #1A1B1C;
+	transform: rotate(-45deg);
+	margin-left: 1px;
+}

@@ -1,0 +1,39 @@
+.sophisticated-skincare {
+	width: 680px;
+	height: 240px;
+	position: absolute;
+	top: 361px;
+	left: 620px;
+	opacity: 1;
+	transform: rotate(0deg);
+	display: flex;
+	justify-content: center;
+	padding: 0;
+}
+
+.sophisticated-skincare-title {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 128px;
+	line-height: 120px;
+	letter-spacing: -0.07em;
+	text-align: center;
+	color: #1A1B1C;
+	opacity: 0.92;
+}
+
+.title-line {
+	display: block;
+}
+
+@media (max-width: 768px) {
+	.sophisticated-skincare-title {
+		font-size: 64px;
+		line-height: 60px;
+	}
+}

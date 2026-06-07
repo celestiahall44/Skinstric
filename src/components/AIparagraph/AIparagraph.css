@@ -1,0 +1,40 @@
+.ai-paragraph {
+	width: 316px;
+	height: 72px;
+	position: absolute;
+	bottom: 64px;
+	left: 76px;
+	opacity: 1;
+	transform: rotate(0deg);
+	display: block;
+	padding: 0;
+}
+
+.ai-paragraph-text {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: 0;
+	text-transform: uppercase;
+	text-align: left;
+	color: #1A1B1C;
+	opacity: 0.96;
+}
+
+.ai-line {
+	display: block;
+	white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+	.ai-paragraph-text {
+		font-size: 14px;
+		line-height: 24px;
+		max-width: 100%;
+	}
+}
