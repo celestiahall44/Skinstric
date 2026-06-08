@@ -2,10 +2,10 @@
 	width: 680px;
 	height: 240px;
 	position: absolute;
-	top: 361px;
-	left: 620px;
+	top: 50%;
+	left: 50%;
 	opacity: 1;
-	transform: rotate(0deg);
+	transform: translate(-50%, -50%);
 	display: flex;
 	justify-content: center;
 	padding: 0;

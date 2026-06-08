@@ -1,7 +1,7 @@
 .button-icon-text-shrunk-right {
 	position: absolute;
 	top: 458px;
-	right: 32px;
+	right: 80px;
 	width: 150px;
 	height: 44px;
 	opacity: 1;
@@ -18,12 +18,12 @@
 
 .button-icon-text-shrunk-right-label {
 	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 20px;
-	font-weight: 500;
+	font-size: 14px;
+	font-weight: 600;
 	line-height: 1;
 	letter-spacing: 0;
 	text-transform: uppercase;
-	color: #1A1B1C;
+	color: #a0a4ab;
 	white-space: nowrap;
 }
 
@@ -32,10 +32,16 @@
 	height: 28px;
 	border: 2px solid #1A1B1C;
 	transform: rotate(45deg);
+	transition: transform 180ms ease;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
+}
+
+.button-icon-text-shrunk-right:hover .button-icon-text-shrunk-right-icon,
+.button-icon-text-shrunk-right:focus-visible .button-icon-text-shrunk-right-icon {
+	transform: rotate(45deg) scale(1.08);
 }
 
 .button-icon-text-shrunk-right-triangle {

@@ -9,7 +9,8 @@ function Rectangle2778() {
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
-				<path d="M602 0L0 301L602 602" />
+				<path d="M301 0L0 301" />
+				<path d="M0 301L301 602" />
 			</svg>
 		</div>
 	);
