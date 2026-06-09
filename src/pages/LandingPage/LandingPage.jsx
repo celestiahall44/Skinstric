@@ -3,12 +3,13 @@ import './Landingpage.css';
 import Header from '../../components/Header/Header';
 import SophisticatedSkincare from '../../components/SophisticatedSkincare/SophisticatedSkincare';
 import AIparagraph from '../../components/AIparagraph/AIparagraph';
-import ButtonIconTextShrunk from '../../components/ButtonIconTextShrunk/ButtonIconTextShrunk';
-import ButtonIconTextShrunkRight from '../../components/ButtonIconTextShrunkRight/ButtonIConTextShrunkRight';
+import DiscoverAIButton from '../../components/DiscoverAIButton/DiscoverAIButton';
+import TakeTestButton from '../../components/TakeTestButton/TakeTestButton';
 import Rectangle2778 from '../../components/Rectangle2778/Rectangle2778';
 import Rectangle2779 from '../../components/Rectangle2779/Rectnagle2779';
+import Rombuses from '../../components/Rombuses/Rombuses';
 
-function LandingPage() {
+function LandingPage({ onTakeTestClick }) {
 	const [hoverSide, setHoverSide] = useState(null);
 
 	const handleTakeTestEnter = () => {
@@ -33,16 +34,19 @@ function LandingPage() {
 		>
 			<Rectangle2779 />
 			<Rectangle2778 />
+			<Rombuses className="rombuses--left" />
+			<Rombuses className="rombuses--right" />
 			<Header />
 			<SophisticatedSkincare />
 			<AIparagraph />
-			<ButtonIconTextShrunk
+			<DiscoverAIButton
 				onMouseEnter={handleDiscoverEnter}
 				onMouseLeave={handleDiscoverLeave}
 				onFocus={handleDiscoverEnter}
 				onBlur={handleDiscoverLeave}
 			/>
-			<ButtonIconTextShrunkRight
+			<TakeTestButton
+				onClick={onTakeTestClick}
 				onMouseEnter={handleTakeTestEnter}
 				onMouseLeave={handleTakeTestLeave}
 				onFocus={handleTakeTestEnter}

@@ -1,0 +1,16 @@
+.rombuses {
+	position: absolute;
+	top: 99px;
+	left: 1539px;
+	width: 762px;
+	height: 762px;
+	opacity: 1;
+	transform: rotate(0deg);
+	pointer-events: none;
+}
+
+.rombuses-svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}

@@ -4,6 +4,7 @@
 	overflow: hidden;
 	background: #fcfcfc;
 	--skincare-slide-duration: 850ms;
+	--rombuses-bleed: 381px;
 }
 
 .landing-page .sophisticated-skincare {
@@ -16,8 +17,10 @@
 	transition: transform var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.landing-page .button-icon-text-shrunk,
+.landing-page .discover-ai-button,
 .landing-page .rectangle-2779 {
+	opacity: 1;
+	transform: translateX(0);
 	transition: opacity var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1), transform var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
 	transition-delay: 0ms;
 }
@@ -34,7 +37,7 @@
 	transform: translateX(-96px);
 }
 
-.landing-page--take-test-hover .button-icon-text-shrunk,
+.landing-page--take-test-hover .discover-ai-button,
 .landing-page--take-test-hover .rectangle-2779 {
 	transition-delay: 0ms;
 	opacity: 0;
@@ -42,8 +45,16 @@
 	pointer-events: none;
 }
 
+.landing-page--take-test-hover .rectangle-2778,
+.landing-page--discover-hover .rectangle-2779 {
+	transition: none;
+	opacity: 0 !important;
+	transform: none;
+	pointer-events: none;
+}
+
 .landing-page--discover-hover .sophisticated-skincare {
-	transform: translate(calc(-50% + 220px), -50%);
+	transform: translate(calc(-50% + 260px), -50%);
 }
 
 .landing-page--discover-hover .sophisticated-skincare-title .title-line:first-child {
@@ -54,16 +65,47 @@
 	transform: translateX(96px);
 }
 
-.landing-page .button-icon-text-shrunk-right,
+.landing-page .take-test-button,
 .landing-page .rectangle-2778 {
+	opacity: 1;
+	transform: translateX(0);
 	transition: opacity var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1), transform var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
 	transition-delay: 0ms;
 }
 
-.landing-page--discover-hover .button-icon-text-shrunk-right,
+.landing-page .rombuses {
+	opacity: 0;
+	transition: opacity var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.landing-page .rombuses--left {
+	left: calc(-1 * var(--rombuses-bleed));
+}
+
+.landing-page .rombuses--right {
+	left: calc(100vw - var(--rombuses-bleed));
+}
+
+.landing-page--discover-hover .take-test-button,
 .landing-page--discover-hover .rectangle-2778 {
 	transition-delay: 0ms;
 	opacity: 0;
 	transform: translateX(18px);
 	pointer-events: none;
+}
+
+.landing-page--discover-hover .rombuses {
+	opacity: 0;
+}
+
+.landing-page--discover-hover .rombuses--left {
+	opacity: 1;
+}
+
+.landing-page--take-test-hover .rombuses {
+	opacity: 0;
+}
+
+.landing-page--take-test-hover .rombuses--right {
+	opacity: 1;
 }
