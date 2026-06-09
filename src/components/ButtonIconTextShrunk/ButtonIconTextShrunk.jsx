@@ -1,8 +1,16 @@
 import './ButtonIconTextShrunk.css';
 
-function ButtonIconTextShrunk() {
+function ButtonIconTextShrunk({ onMouseEnter, onMouseLeave, onFocus, onBlur }) {
 	return (
-		<button type="button" className="button-icon-text-shrunk" aria-label="Discover A.I.">
+		<button
+			type="button"
+			className="button-icon-text-shrunk"
+			aria-label="Discover A.I."
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
+			onFocus={onFocus}
+			onBlur={onBlur}
+		>
 			<span className="button-icon-text-shrunk-icon" aria-hidden="true">
 				<span className="button-icon-text-shrunk-triangle" />
 			</span>

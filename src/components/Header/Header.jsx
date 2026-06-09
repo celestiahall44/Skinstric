@@ -4,7 +4,9 @@ import headerArt from './header.svg';
 function Header() {
 	return (
 		<header className="site-header">
-			<img src={headerArt} alt="Skintristic header" className="site-header-image" />
+			<a href="/" className="site-header-home-link" aria-label="Go to home page">
+				<img src={headerArt} alt="Skintristic header" className="site-header-image" />
+			</a>
 		</header>
 	);
 }
