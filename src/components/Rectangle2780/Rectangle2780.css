@@ -1,0 +1,16 @@
+.rectangle-2780 {
+	position: absolute;
+	top: 99px;
+	left: 579px;
+	width: 762px;
+	height: 762px;
+	opacity: 0.3;
+	transform: rotate(0deg);
+	pointer-events: none;
+}
+
+.rectangle-2780-svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}

@@ -1,0 +1,79 @@
+.introduction-text {
+	position: absolute;
+	top: 86px;
+	left: 32px;
+	width: 227px;
+	height: 24px;
+	opacity: 1;
+	transform: rotate(0deg);
+	color: #1A1B1C;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+	text-transform: uppercase;
+	display: inline-flex;
+	align-items: center;
+}
+
+.introduction-text-svg {
+	width: 142px;
+	height: 12px;
+	display: block;
+	flex-shrink: 0;
+}
+
+.introduce-yourself {
+	position: absolute;
+	top: 448px;
+	left: 750px;
+	width: 420px;
+	height: 65px;
+	opacity: 1;
+	transform: rotate(0deg);
+	border-bottom: 1px solid #1A1B1C;
+	box-sizing: border-box;
+	display: flex;
+	align-items: flex-end;
+}
+
+.introduce-yourself-input {
+	width: 100%;
+	height: 56px;
+	border: 0;
+	outline: none;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	letter-spacing: -0.8px;
+	color: #1A1B1C;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	font-size: 54px;
+	line-height: 56px;
+}
+
+.introduce-yourself-input::placeholder {
+	text-align: center;
+	color: #a0a1a3;
+}
+
+.introduce-yourself-input.location-step::placeholder {
+	font-size: 44px;
+}
+
+.introduce-yourself-error {
+	position: absolute;
+	top: -5px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 420px;
+	margin: 0;
+	text-align: center;
+	color: #D93025;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 16px;
+}

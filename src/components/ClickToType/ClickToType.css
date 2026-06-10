@@ -1,0 +1,25 @@
+.click-to-type {
+	position: absolute;
+	top: 422px;
+	left: 905px;
+	width: 96px;
+	height: 24px;
+	opacity: 0.4;
+	transform: rotate(0deg);
+	color: #1A1B1C;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	letter-spacing: 0;
+	text-transform: uppercase;
+	display: inline-flex;
+	align-items: center;
+}
+
+.click-to-type-svg {
+	width: 95px;
+	height: 11px;
+	display: block;
+	flex-shrink: 0;
+}

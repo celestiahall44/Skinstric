@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
-import Analysis from './pages/Analysis/Analysis';
+import Introduction from './pages/Introduction/Introduction';
 
 function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -24,11 +24,11 @@ function App() {
     setPath(to);
   };
 
-  if (path === '/analysis') {
-    return <Analysis />;
+  if (path === '/introduction') {
+    return <Introduction />;
   }
 
-  return <LandingPage onTakeTestClick={() => navigate('/analysis')} />;
+  return <LandingPage onTakeTestClick={() => navigate('/introduction')} />;
 }
 
 export default App;

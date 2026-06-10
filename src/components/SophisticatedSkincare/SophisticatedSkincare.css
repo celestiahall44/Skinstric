@@ -25,10 +25,27 @@
 	text-align: center;
 	color: #1A1B1C;
 	opacity: 0.92;
+	animation: sophisticated-skincare-fade-in 1400ms ease-out 250ms both;
 }
 
 .title-line {
 	display: block;
+}
+
+@keyframes sophisticated-skincare-fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 0.92;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sophisticated-skincare-title {
+		animation: none;
+	}
 }
 
 @media (max-width: 768px) {
