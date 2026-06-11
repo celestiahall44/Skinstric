@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
 import Introduction from './pages/Introduction/Introduction';
+import Options from './pages/Options/Options';
 
 function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -25,7 +26,11 @@ function App() {
   };
 
   if (path === '/introduction') {
-    return <Introduction />;
+    return <Introduction onProceedClick={() => navigate('/options')} />;
+  }
+
+  if (path === '/options') {
+    return <Options />;
   }
 
   return <LandingPage onTakeTestClick={() => navigate('/introduction')} />;

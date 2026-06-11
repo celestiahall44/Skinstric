@@ -14,10 +14,23 @@
 	border: 0;
 	background: transparent;
 	cursor: pointer;
+	overflow: visible;
 }
 
 .back-button-svg {
 	width: 100%;
 	height: 100%;
 	display: block;
+	overflow: visible;
+}
+
+.back-button-icon-group {
+	transform-box: fill-box;
+	transform-origin: center;
+	transition: transform 180ms ease;
+}
+
+.back-button:hover .back-button-icon-group,
+.back-button:focus-visible .back-button-icon-group {
+	transform: scale(1.12);
 }

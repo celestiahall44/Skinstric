@@ -36,7 +36,7 @@ function LandingPage({ onTakeTestClick }) {
 			<Rectangle2778 />
 			<Rombuses className="rombuses--left" />
 			<Rombuses className="rombuses--right" />
-			<Header />
+			<Header hideEnterCode={false} />
 			<SophisticatedSkincare />
 			<AIparagraph />
 			<DiscoverAIButton
