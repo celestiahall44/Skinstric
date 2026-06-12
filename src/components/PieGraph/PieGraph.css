@@ -1,0 +1,15 @@
+.pie-graph {
+	position: absolute;
+	top: 304px;
+	left: 256px;
+	width: 1168px;
+	height: 544px;
+	opacity: 1;
+	transform: rotate(0deg);
+}
+
+.pie-graph svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,41 @@
+.get-summary-button {
+	position: absolute;
+	top: 865px;
+	right: 32px;
+	width: 172px;
+	height: 70px;
+	opacity: 1;
+	transform: rotate(0deg);
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 16px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.get-summary-button-label {
+	color: #1A1B1C;
+	opacity: 0.7;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+}
+
+.get-summary-button-icon {
+	width: 70px;
+	height: 70px;
+	display: block;
+	transform-origin: center;
+	transition: transform 180ms ease;
+}
+
+.get-summary-button:hover .get-summary-button-icon,
+.get-summary-button:focus-visible .get-summary-button-icon {
+	transform: scale(1.12);
+}

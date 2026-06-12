@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import './Options.css';
 import Header from '../../components/Header/Header';
 import BackButton from '../../components/BackButton/BackButton';
+import ToStartAnalysis from '../../components/ToStartAnalysis/ToStartAnalysis';
 import Gallery from '../../components/Gallery/Gallery';
 import Camera from '../../components/Camera/Camera';
 import PhaseTwoLoading from '../../components/PhaseTwoLoading/PhaseTwoLoading';
@@ -9,7 +10,7 @@ import PhaseTwoLoading from '../../components/PhaseTwoLoading/PhaseTwoLoading';
 const PHASE_TWO_ENDPOINT = 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo';
 const MIN_LOADING_DURATION_MS = 5000;
 
-function Options() {
+function Options({ onAnalysisComplete }) {
 	const fileInputRef = useRef(null);
 	const [uploadPhase, setUploadPhase] = useState('idle');
 	const [uploadError, setUploadError] = useState('');
@@ -132,20 +133,22 @@ function Options() {
 	};
 
 	const handleSuccessOkClick = () => {
-		setUploadPhase('idle');
-		setUploadError('');
-
 		if (loadingPreviewSrc) {
 			URL.revokeObjectURL(loadingPreviewSrc);
 			setLoadingPreviewSrc('');
+		}
+
+		if (onAnalysisComplete) {
+			onAnalysisComplete();
 		}
 	};
 
 	if (uploadPhase === 'loading' || uploadPhase === 'success') {
 		return (
 			<main className="options-page" aria-label="Upload analysis state">
-				<Header hideEnterCode />
+				<Header />
 				<BackButton onClick={handleBackClick} />
+				<ToStartAnalysis />
 				<PhaseTwoLoading
 					previewSrc={loadingPreviewSrc}
 					showOkButton={uploadPhase === 'success'}
@@ -157,8 +160,9 @@ function Options() {
 
 	return (
 		<main className="options-page" aria-label="Options page">
-			<Header hideEnterCode />
+			<Header />
 			<BackButton onClick={handleBackClick} />
+			<ToStartAnalysis />
 			<Camera />
 			<Gallery onClick={handleGalleryClick} />
 			<input

@@ -3,6 +3,8 @@ import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
 import Introduction from './pages/Introduction/Introduction';
 import Options from './pages/Options/Options';
+import AIAnalysis from './pages/AIAnalysis/AIAnalysis';
+import Demographics from './pages/Demographics/Demographics';
 
 function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -30,7 +32,15 @@ function App() {
   }
 
   if (path === '/options') {
-    return <Options />;
+    return <Options onAnalysisComplete={() => navigate('/ai-analysis')} />;
+  }
+
+  if (path === '/ai-analysis') {
+    return <AIAnalysis />;
+  }
+
+  if (path === '/demographics') {
+    return <Demographics />;
   }
 
   return <LandingPage onTakeTestClick={() => navigate('/introduction')} />;

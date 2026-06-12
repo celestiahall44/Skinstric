@@ -1,0 +1,52 @@
+.group-39959 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 450px;
+	height: 450px;
+	border: 0.1px solid #FCFCFC;
+	opacity: 1;
+	transform: translate(-50%, -50%) rotate(0deg);
+	overflow: visible;
+}
+
+.group-39959-link {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.group-39959-link rect {
+	transition: fill 180ms ease, opacity 180ms ease;
+}
+
+.group-39959-link:hover rect {
+	fill: #D2D2D4;
+}
+
+.group-39959-active {
+	transform-box: fill-box;
+	transform-origin: center;
+	transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.group-39959-active:hover {
+	transform: scale(1.03);
+}
+
+.group-39959-active:hover rect {
+	opacity: 0.8;
+}
+
+.group-39959-disabled {
+	cursor: not-allowed !important;
+	pointer-events: auto;
+}
+
+.group-39959-disabled:hover {
+	cursor: not-allowed !important;
+}
+
+.group-39959-disabled:hover rect {
+	opacity: 1;
+}
+

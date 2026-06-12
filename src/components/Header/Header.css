@@ -29,13 +29,29 @@
 }
 
 .site-header-home-link {
-	display: block;
-	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 32px;
+	width: 82px;
 	height: 100%;
 	cursor: pointer;
+	display: block;
 }
 
 .site-header-home-link:focus-visible {
 	outline: 2px solid #1A1B1C;
 	outline-offset: -2px;
+}
+
+.site-header-enter-code-blocker {
+	position: absolute;
+	top: 15px;
+	right: 32px;
+	width: 92px;
+	height: 32px;
+	background: transparent;
+	border: 0;
+	padding: 0;
+	z-index: 3;
+	cursor: default;
 }

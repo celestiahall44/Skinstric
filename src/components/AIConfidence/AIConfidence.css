@@ -1,0 +1,96 @@
+.ai-confidence {
+	position: absolute;
+	top: 304px;
+	left: 1440px;
+	width: 448px;
+	height: 544px;
+	opacity: 1;
+	transform: rotate(0deg);
+}
+
+.ai-confidence svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.ai-confidence-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 24px;
+	border-bottom: 1px solid #1A1B1C;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	font-size: 12px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #1A1B1C;
+}
+
+.ai-confidence-header-left {
+	flex: 1;
+}
+
+.ai-confidence-header-right {
+	text-align: right;
+}
+
+.ai-confidence-list {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.ai-confidence-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 24px;
+	border-bottom: 1px solid #E1E1E2;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	color: #1A1B1C;
+	background: #F3F3F4;
+}
+
+.ai-confidence-item:last-child {
+	border-bottom: none;
+}
+
+.ai-confidence-item-label {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex: 1;
+}
+
+.ai-confidence-item-icon {
+	font-size: 14px;
+	color: #1A1B1C;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+}
+
+.ai-confidence-item-text {
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.ai-confidence-item-percentage {
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: right;
+	min-width: 40px;
+}
+

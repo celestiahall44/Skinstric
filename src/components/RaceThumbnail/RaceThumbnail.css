@@ -1,0 +1,15 @@
+.race-thumbnail {
+	position: absolute;
+	top: 304px;
+	left: 32px;
+	width: 208px;
+	height: 104px;
+	opacity: 1;
+	transform: rotate(0deg);
+}
+
+.race-thumbnail svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,22 @@
+.ai-header-text {
+	position: absolute;
+	top: 86px;
+	left: 18px;
+	width: 160px;
+	height: 16px;
+	opacity: 1;
+	transform: rotate(0deg);
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+	text-transform: uppercase;
+	color: #1A1B1C;
+}
+
+.ai-header-text svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
