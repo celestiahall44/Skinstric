@@ -5,6 +5,8 @@ import Introduction from './pages/Introduction/Introduction';
 import Options from './pages/Options/Options';
 import AIAnalysis from './pages/AIAnalysis/AIAnalysis';
 import Demographics from './pages/Demographics/Demographics';
+import CameraSetUp from './pages/CameraSetUp/CameraSetUp';
+import TakePhoto from './pages/TakePhoto/TakePhoto';
 
 const PHASE_TWO_RESULT_STORAGE_KEY = 'skinstricPhaseTwoResult';
 
@@ -62,8 +64,17 @@ function App() {
 
           navigate('/demographics');
         }}
+        onCameraPermissionAllow={() => navigate('/camera-setup')}
       />
     );
+  }
+
+  if (path === '/camera-setup') {
+    return <CameraSetUp onSetupComplete={() => navigate('/take-photo')} />;
+  }
+
+  if (path === '/take-photo') {
+    return <TakePhoto onLogoClick={() => navigate('/')} onBack={() => navigate('/camera-setup')} />;
   }
 
   if (path === '/ai-analysis') {

@@ -1,8 +1,8 @@
 import './BackButton.css';
 
-function BackButton({ onClick }) {
+function BackButton({ onClick, inverted }) {
 	return (
-		<button type="button" className="back-button" aria-label="Back" onClick={onClick}>
+		<button type="button" className={`back-button${inverted ? ' back-button--inverted' : ''}`} aria-label="Back" onClick={onClick}>
 			<svg
 				className="back-button-svg"
 				width="97"

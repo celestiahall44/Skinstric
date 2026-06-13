@@ -9,13 +9,29 @@ import PhaseTwoLoading from '../../components/PhaseTwoLoading/PhaseTwoLoading';
 
 const PHASE_TWO_ENDPOINT = 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo';
 const MIN_LOADING_DURATION_MS = 5000;
+const CAMERA_PERMISSION_STORAGE_KEY = 'skinstricCameraPermission';
 
-function Options({ onAnalysisComplete }) {
+function readStoredCameraPermission() {
+	try {
+		const value = window.localStorage.getItem(CAMERA_PERMISSION_STORAGE_KEY);
+		if (value === 'allowed' || value === 'denied') {
+			return value;
+		}
+	} catch {
+		return 'unknown';
+	}
+
+	return 'unknown';
+}
+
+function Options({ onAnalysisComplete, onCameraPermissionAllow }) {
 	const fileInputRef = useRef(null);
 	const [uploadPhase, setUploadPhase] = useState('idle');
 	const [uploadError, setUploadError] = useState('');
 	const [loadingPreviewSrc, setLoadingPreviewSrc] = useState('');
 	const [uploadResult, setUploadResult] = useState(null);
+	const [showCameraPermissionDialog, setShowCameraPermissionDialog] = useState(false);
+	const [cameraPermissionStatus, setCameraPermissionStatus] = useState(() => readStoredCameraPermission());
 
 	const fileToBase64 = (file) =>
 		new Promise((resolve, reject) => {
@@ -83,6 +99,44 @@ function Options({ onAnalysisComplete }) {
 		if (fileInputRef.current) {
 			fileInputRef.current.value = '';
 			fileInputRef.current.click();
+		}
+	};
+
+	const handleCameraClick = () => {
+		if (cameraPermissionStatus === 'allowed') {
+			if (onCameraPermissionAllow) {
+				onCameraPermissionAllow();
+			}
+			return;
+		}
+
+		setShowCameraPermissionDialog(true);
+	};
+
+	const handleCameraPermissionAllow = () => {
+		setShowCameraPermissionDialog(false);
+		setCameraPermissionStatus('allowed');
+		try {
+			window.localStorage.setItem(CAMERA_PERMISSION_STORAGE_KEY, 'allowed');
+		} catch {
+			// Ignore storage write failures.
+		}
+		setUploadPhase('idle');
+		setUploadError('');
+		setUploadResult(null);
+
+		if (onCameraPermissionAllow) {
+			onCameraPermissionAllow();
+		}
+	};
+
+	const handleCameraPermissionDeny = () => {
+		setShowCameraPermissionDialog(false);
+		setCameraPermissionStatus('denied');
+		try {
+			window.localStorage.setItem(CAMERA_PERMISSION_STORAGE_KEY, 'denied');
+		} catch {
+			// Ignore storage write failures.
 		}
 	};
 
@@ -202,7 +256,7 @@ function Options({ onAnalysisComplete }) {
 			<Header />
 			<BackButton onClick={handleBackClick} />
 			<ToStartAnalysis />
-			<Camera />
+			<Camera onClick={handleCameraClick} />
 			<Gallery onClick={handleGalleryClick} />
 			<input
 				ref={fileInputRef}
@@ -211,6 +265,32 @@ function Options({ onAnalysisComplete }) {
 				onChange={handleFileSelection}
 				className="options-gallery-file-input"
 			/>
+			{showCameraPermissionDialog ? (
+				<div className="options-camera-dialog-backdrop" role="presentation" onClick={handleCameraPermissionDeny}>
+					<div
+						className="options-camera-dialog"
+						role="dialog"
+						aria-modal="true"
+						aria-labelledby="options-camera-dialog-title"
+						onClick={(event) => event.stopPropagation()}
+					>
+						<p className="options-camera-dialog-title" id="options-camera-dialog-title">
+							Allow camera access?
+						</p>
+						<p className="options-camera-dialog-copy">
+							Skintristic can use your camera to take a live selfie for analysis.
+						</p>
+						<div className="options-camera-dialog-actions">
+							<button type="button" className="options-camera-dialog-button options-camera-dialog-button--deny" onClick={handleCameraPermissionDeny}>
+								Deny
+							</button>
+							<button type="button" className="options-camera-dialog-button options-camera-dialog-button--allow" onClick={handleCameraPermissionAllow}>
+								Allow
+							</button>
+						</div>
+					</div>
+				</div>
+			) : null}
 			{uploadError && <p className="options-upload-error">{uploadError}</p>}
 		</main>
 	);

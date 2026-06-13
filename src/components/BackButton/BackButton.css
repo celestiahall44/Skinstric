@@ -30,6 +30,10 @@
 	transition: transform 180ms ease;
 }
 
+.back-button--inverted {
+	filter: invert(1);
+}
+
 .back-button:hover .back-button-icon-group,
 .back-button:focus-visible .back-button-icon-group {
 	transform: scale(1.12);

@@ -1,0 +1,25 @@
+.suggestions {
+	position: absolute;
+	top: calc(50% + 220px);
+	left: 50%;
+	transform: translateX(-50%);
+	width: 492px;
+	height: 64px;
+	z-index: 2;
+	pointer-events: none;
+}
+
+.suggestions--inverted {
+	filter: invert(1);
+}
+
+.suggestions--bottom {
+	top: auto;
+	bottom: 40px;
+}
+
+.suggestions svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}

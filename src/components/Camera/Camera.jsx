@@ -1,8 +1,17 @@
 import './Camera.css';
 
-function Camera() {
+function Camera({ href = '#', onClick }) {
+	const handleClick = (event) => {
+		if (!onClick) {
+			return;
+		}
+
+		event.preventDefault();
+		onClick();
+	};
+
 	return (
-		<a className="camera" href="#" aria-label="Camera option">
+		<a className="camera" href={href} aria-label="Camera option" onClick={handleClick}>
 			<svg className="camera-svg" viewBox="0 0 521 484" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g className="camera-hover-target">
 					<circle cx="242" cy="242" r="57.7857" stroke="#1A1B1C" />

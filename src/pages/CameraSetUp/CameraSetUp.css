@@ -1,0 +1,50 @@
+.camera-setup-page {
+	position: relative;
+	min-height: 100vh;
+	background: #fcfcfc;
+}
+
+.camera-setup-rombuses {
+	top: 50%;
+	left: 50%;
+	width: 560px;
+	height: 560px;
+	transform: translate(-50%, -50%);
+}
+
+.camera-setup-rombuses .rombuses-ring {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation-name: introduction-rhombus-spin;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.camera-setup-rombuses .rombuses-ring-1 {
+	animation-duration: 78s;
+}
+
+.camera-setup-rombuses .rombuses-ring-2 {
+	animation-duration: 108s;
+	animation-direction: reverse;
+}
+
+.camera-setup-rombuses .rombuses-ring-3 {
+	animation-duration: 144s;
+}
+
+@keyframes introduction-rhombus-spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.camera-setup-rombuses .rombuses-ring {
+		animation: none;
+	}
+}
