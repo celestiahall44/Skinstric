@@ -6,8 +6,24 @@ import Options from './pages/Options/Options';
 import AIAnalysis from './pages/AIAnalysis/AIAnalysis';
 import Demographics from './pages/Demographics/Demographics';
 
+const PHASE_TWO_RESULT_STORAGE_KEY = 'skinstricPhaseTwoResult';
+
+function readStoredPhaseTwoResult() {
+  try {
+    const storedValue = window.localStorage.getItem(PHASE_TWO_RESULT_STORAGE_KEY);
+    if (!storedValue) {
+      return null;
+    }
+
+    return JSON.parse(storedValue);
+  } catch {
+    return null;
+  }
+}
+
 function App() {
   const [path, setPath] = useState(window.location.pathname);
+  const [phaseTwoResult, setPhaseTwoResult] = useState(() => readStoredPhaseTwoResult());
 
   useEffect(() => {
     const handlePopState = () => {
@@ -32,7 +48,22 @@ function App() {
   }
 
   if (path === '/options') {
-    return <Options onAnalysisComplete={() => navigate('/ai-analysis')} />;
+    return (
+      <Options
+        onAnalysisComplete={(result) => {
+          const nextResult = result || null;
+          setPhaseTwoResult(nextResult);
+
+          if (nextResult) {
+            window.localStorage.setItem(PHASE_TWO_RESULT_STORAGE_KEY, JSON.stringify(nextResult));
+          } else {
+            window.localStorage.removeItem(PHASE_TWO_RESULT_STORAGE_KEY);
+          }
+
+          navigate('/demographics');
+        }}
+      />
+    );
   }
 
   if (path === '/ai-analysis') {
@@ -40,7 +71,7 @@ function App() {
   }
 
   if (path === '/demographics') {
-    return <Demographics />;
+    return <Demographics phaseTwoResult={phaseTwoResult} />;
   }
 
   return <LandingPage onTakeTestClick={() => navigate('/introduction')} />;

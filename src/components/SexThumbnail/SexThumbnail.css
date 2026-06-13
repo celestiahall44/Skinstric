@@ -13,3 +13,27 @@
 	width: 100%;
 	height: 100%;
 }
+
+.sex-thumbnail-link {
+	display: block;
+	text-decoration: none;
+	filter: grayscale(1) brightness(1);
+	transition: filter 150ms ease;
+}
+
+.sex-thumbnail-link:hover {
+	filter: grayscale(1) brightness(0.8);
+}
+
+.sex-thumbnail-link:active {
+	filter: grayscale(1) brightness(0.42);
+}
+
+.sex-thumbnail-link:focus-visible {
+	outline: 2px solid #1a1b1c;
+	outline-offset: 2px;
+}
+
+.sex-thumbnail-link--active {
+	filter: invert(1);
+}

@@ -19,14 +19,12 @@ function AIAnalysis() {
 	};
 
 	const handleBackClick = () => {
-		const currentPath = window.location.pathname;
-		window.history.back();
+		if (window.location.pathname === '/options') {
+			return;
+		}
 
-		window.setTimeout(() => {
-			if (window.location.pathname === currentPath) {
-				window.location.assign('/options');
-			}
-		}, 150);
+		window.history.pushState({}, '', '/options');
+		window.dispatchEvent(new PopStateEvent('popstate'));
 	};
 
 	return (

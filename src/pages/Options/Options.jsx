@@ -15,6 +15,7 @@ function Options({ onAnalysisComplete }) {
 	const [uploadPhase, setUploadPhase] = useState('idle');
 	const [uploadError, setUploadError] = useState('');
 	const [loadingPreviewSrc, setLoadingPreviewSrc] = useState('');
+	const [uploadResult, setUploadResult] = useState(null);
 
 	const fileToBase64 = (file) =>
 		new Promise((resolve, reject) => {
@@ -34,10 +35,28 @@ function Options({ onAnalysisComplete }) {
 			reader.readAsDataURL(file);
 		});
 
+	const tryParseJson = (value) => {
+		if (typeof value !== 'string') {
+			return null;
+		}
+
+		const trimmed = value.trim();
+		if (!trimmed || !(trimmed.startsWith('{') || trimmed.startsWith('['))) {
+			return null;
+		}
+
+		try {
+			return JSON.parse(trimmed);
+		} catch {
+			return null;
+		}
+	};
+
 	const handleBackClick = () => {
 		if (uploadPhase === 'loading' || uploadPhase === 'success') {
 			setUploadPhase('idle');
 			setUploadError('');
+			setUploadResult(null);
 
 			if (loadingPreviewSrc) {
 				URL.revokeObjectURL(loadingPreviewSrc);
@@ -60,6 +79,7 @@ function Options({ onAnalysisComplete }) {
 	const handleGalleryClick = () => {
 		setUploadPhase('idle');
 		setUploadError('');
+		setUploadResult(null);
 		if (fileInputRef.current) {
 			fileInputRef.current.value = '';
 			fileInputRef.current.click();
@@ -88,6 +108,7 @@ function Options({ onAnalysisComplete }) {
 		setUploadPhase('loading');
 		const loadingStartTime = Date.now();
 		let uploadSucceeded = false;
+		let parsedUploadResult = null;
 		let loadingElapsed = false;
 
 		try {
@@ -112,10 +133,28 @@ function Options({ onAnalysisComplete }) {
 				throw new Error(responseText || 'Upload failed.');
 			}
 
+			const responseText = await response.text();
+			if (responseText.trim()) {
+				try {
+					parsedUploadResult = JSON.parse(responseText);
+
+					if (typeof parsedUploadResult === 'string') {
+						const reparsed = tryParseJson(parsedUploadResult);
+						parsedUploadResult = reparsed || { rawResponse: parsedUploadResult };
+					}
+				} catch {
+					const reparsed = tryParseJson(responseText);
+					parsedUploadResult = reparsed || { rawResponse: responseText };
+				}
+			}
+
+			setUploadResult(parsedUploadResult);
+
 			uploadSucceeded = true;
 		} catch (error) {
 			setUploadPhase('idle');
 			setUploadError(error instanceof Error ? error.message : 'Upload failed.');
+			setUploadResult(null);
 		} finally {
 			const elapsed = Date.now() - loadingStartTime;
 			if (elapsed < MIN_LOADING_DURATION_MS) {
@@ -139,7 +178,7 @@ function Options({ onAnalysisComplete }) {
 		}
 
 		if (onAnalysisComplete) {
-			onAnalysisComplete();
+			onAnalysisComplete(uploadResult);
 		}
 	};
 
