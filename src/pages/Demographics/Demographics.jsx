@@ -74,9 +74,24 @@ function Demographics({ phaseTwoResult }) {
 		setSelectedPredictionRow(row);
 	};
 
-	const raceTopLabel = topRace ? topRace.label : '';
-	const ageTopLabel = topAge ? topAge.label : '';
-	const sexTopLabel = topSex ? topSex.label : '';
+	const raceTopLabel =
+		selectedPredictionRow && selectedPredictionRow.section === 'race'
+			? selectedPredictionRow.label
+			: topRace
+				? topRace.label
+				: '';
+	const ageTopLabel =
+		selectedPredictionRow && selectedPredictionRow.section === 'age'
+			? selectedPredictionRow.label
+			: topAge
+				? topAge.label
+				: '';
+	const sexTopLabel =
+		selectedPredictionRow && selectedPredictionRow.section === 'sex'
+			? selectedPredictionRow.label
+			: topSex
+				? topSex.label
+				: '';
 
 	return (
 		<main className="demographics-page" aria-label="Demographics page">
