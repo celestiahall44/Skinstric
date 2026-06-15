@@ -1,8 +1,10 @@
 import './ProceedButton.css';
 
-function ProceedButton({ onClick }) {
+function ProceedButton({ onClick, className = '' }) {
+	const buttonClassName = `proceed-button ${className}`.trim();
+
 	return (
-		<button type="button" className="proceed-button" aria-label="Proceed" onClick={onClick}>
+		<button type="button" className={buttonClassName} aria-label="Proceed" onClick={onClick}>
 			<span className="proceed-button-label">PROCEED</span>
 			<svg
 				className="proceed-button-icon"

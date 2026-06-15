@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Landingpage.css';
 import Header from '../../components/Header/Header';
 import SophisticatedSkincare from '../../components/SophisticatedSkincare/SophisticatedSkincare';
@@ -11,8 +11,26 @@ import LandingParagraph from '../../components/LandingParagraph/LandingParagraph
 
 function LandingPage({ onTakeTestClick }) {
 	const [hoverSide, setHoverSide] = useState(null);
+	const isCompactLanding = () => window.innerWidth < 1025;
+
+	useEffect(() => {
+		const handleResize = () => {
+			if (isCompactLanding()) {
+				setHoverSide(null);
+			}
+		};
+
+		window.addEventListener('resize', handleResize);
+		handleResize();
+
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
 
 	const handleTakeTestEnter = () => {
+		if (isCompactLanding()) {
+			return;
+		}
+
 		setHoverSide('right');
 	};
 
@@ -21,6 +39,10 @@ function LandingPage({ onTakeTestClick }) {
 	};
 
 	const handleDiscoverEnter = () => {
+		if (isCompactLanding()) {
+			return;
+		}
+
 		setHoverSide('left');
 	};
 

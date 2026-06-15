@@ -82,14 +82,12 @@ function Options({ onAnalysisComplete, onCameraPermissionAllow }) {
 			return;
 		}
 
-		const currentPath = window.location.pathname;
-		window.history.back();
+		if (window.location.pathname === '/') {
+			return;
+		}
 
-		window.setTimeout(() => {
-			if (window.location.pathname === currentPath) {
-				window.location.assign('/');
-			}
-		}, 150);
+		window.history.pushState({}, '', '/');
+		window.dispatchEvent(new PopStateEvent('popstate'));
 	};
 
 	const handleGalleryClick = () => {

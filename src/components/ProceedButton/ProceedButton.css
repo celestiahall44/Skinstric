@@ -42,3 +42,11 @@ body.introduction-complete .proceed-button {
 .proceed-button:focus-visible .proceed-button-icon {
 	transform: scale(1.12);
 }
+
+.proceed-button--visible {
+	display: inline-flex !important;
+}
+
+.proceed-button--inverted {
+	filter: invert(1);
+}

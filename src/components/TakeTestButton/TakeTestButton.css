@@ -52,7 +52,7 @@
 
 .take-test-button:hover .take-test-button-icon,
 .take-test-button:focus-visible .take-test-button-icon {
-	transform: rotate(45deg) scale(1.12);
+	transform: rotate(45deg) scale(1.2);
 }
 
 .take-test-button:hover .take-test-button-icon::before,
@@ -69,3 +69,29 @@
 	transform: rotate(-45deg);
 	margin-left: 1px;
 }
+
+@media (max-width: 1024px) {
+	.take-test-button {
+		width: 170px;
+		height: 48px;
+		gap: 14px;
+	}
+
+	.take-test-button-label {
+		font-size: 16px;
+		font-weight: 700;
+	}
+
+	.take-test-button-icon {
+		width: 32px;
+		height: 32px;
+		border-width: 1.5px;
+	}
+
+	.take-test-button-triangle {
+		border-top: 5px solid transparent;
+		border-bottom: 5px solid transparent;
+		border-left: 7px solid #1A1B1C;
+	}
+}
+

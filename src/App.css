@@ -1,6 +1,31 @@
-.App {
+.app-responsive-viewport {
+  width: 100vw;
   height: 100vh;
-  position: relative;
-  overflow: hidden;
+  overflow: auto;
   background: #fcfcfc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.app-responsive-shell {
+  transform-origin: top center;
+  will-change: transform;
+  flex-shrink: 0;
+}
+
+.app-responsive-viewport--compact {
+  overflow: hidden;
+  align-items: flex-start;
+}
+
+.app-responsive-viewport--compact .app-responsive-shell {
+  transform-origin: top center;
+}
+
+@media (max-width: 1024px) {
+  .app-responsive-viewport {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
 }

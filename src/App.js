@@ -9,6 +9,8 @@ import CameraSetUp from './pages/CameraSetUp/CameraSetUp';
 import TakePhoto from './pages/TakePhoto/TakePhoto';
 
 const PHASE_TWO_RESULT_STORAGE_KEY = 'skinstricPhaseTwoResult';
+const DESIGN_WIDTH = 1920;
+const DESIGN_HEIGHT = 960;
 
 function readStoredPhaseTwoResult() {
   try {
@@ -26,6 +28,21 @@ function readStoredPhaseTwoResult() {
 function App() {
   const [path, setPath] = useState(window.location.pathname);
   const [phaseTwoResult, setPhaseTwoResult] = useState(() => readStoredPhaseTwoResult());
+  const [viewportScale, setViewportScale] = useState(1);
+  const [isCompactViewport, setIsCompactViewport] = useState(false);
+
+  const handlePhaseTwoAnalysisComplete = (result) => {
+    const nextResult = result || null;
+    setPhaseTwoResult(nextResult);
+
+    if (nextResult) {
+      window.localStorage.setItem(PHASE_TWO_RESULT_STORAGE_KEY, JSON.stringify(nextResult));
+    } else {
+      window.localStorage.removeItem(PHASE_TWO_RESULT_STORAGE_KEY);
+    }
+
+    navigate('/ai-analysis');
+  };
 
   useEffect(() => {
     const handlePopState = () => {
@@ -34,6 +51,20 @@ function App() {
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  useEffect(() => {
+    const recalculateScale = () => {
+      const widthScale = window.innerWidth / DESIGN_WIDTH;
+      const heightScale = window.innerHeight / DESIGN_HEIGHT;
+      const compact = window.innerWidth < 1025;
+      setIsCompactViewport(compact);
+      setViewportScale(compact ? Math.max(widthScale, heightScale) : Math.min(widthScale, heightScale, 1));
+    };
+
+    recalculateScale();
+    window.addEventListener('resize', recalculateScale);
+    return () => window.removeEventListener('resize', recalculateScale);
   }, []);
 
   const navigate = (to) => {
@@ -45,47 +76,43 @@ function App() {
     setPath(to);
   };
 
+  let pageContent = <LandingPage onTakeTestClick={() => navigate('/introduction')} />;
+
   if (path === '/introduction') {
-    return <Introduction onProceedClick={() => navigate('/options')} />;
-  }
-
-  if (path === '/options') {
-    return (
+    pageContent = <Introduction onProceedClick={() => navigate('/options')} />;
+  } else if (path === '/options') {
+    pageContent = (
       <Options
-        onAnalysisComplete={(result) => {
-          const nextResult = result || null;
-          setPhaseTwoResult(nextResult);
-
-          if (nextResult) {
-            window.localStorage.setItem(PHASE_TWO_RESULT_STORAGE_KEY, JSON.stringify(nextResult));
-          } else {
-            window.localStorage.removeItem(PHASE_TWO_RESULT_STORAGE_KEY);
-          }
-
-          navigate('/demographics');
-        }}
+        onAnalysisComplete={handlePhaseTwoAnalysisComplete}
         onCameraPermissionAllow={() => navigate('/camera-setup')}
       />
     );
+  } else if (path === '/camera-setup') {
+    pageContent = <CameraSetUp onSetupComplete={() => navigate('/take-photo')} />;
+  } else if (path === '/take-photo') {
+    pageContent = (
+      <TakePhoto
+        onLogoClick={() => navigate('/')}
+        onBack={() => navigate('/options')}
+        onAnalysisComplete={handlePhaseTwoAnalysisComplete}
+      />
+    );
+  } else if (path === '/ai-analysis') {
+    pageContent = <AIAnalysis />;
+  } else if (path === '/demographics') {
+    pageContent = <Demographics phaseTwoResult={phaseTwoResult} />;
   }
 
-  if (path === '/camera-setup') {
-    return <CameraSetUp onSetupComplete={() => navigate('/take-photo')} />;
-  }
-
-  if (path === '/take-photo') {
-    return <TakePhoto onLogoClick={() => navigate('/')} onBack={() => navigate('/camera-setup')} />;
-  }
-
-  if (path === '/ai-analysis') {
-    return <AIAnalysis />;
-  }
-
-  if (path === '/demographics') {
-    return <Demographics phaseTwoResult={phaseTwoResult} />;
-  }
-
-  return <LandingPage onTakeTestClick={() => navigate('/introduction')} />;
+  return (
+    <div className={`app-responsive-viewport${isCompactViewport ? ' app-responsive-viewport--compact' : ''}`}>
+      <div
+        className="app-responsive-shell"
+        style={{ transform: `scale(${viewportScale})`, width: `${DESIGN_WIDTH}px`, height: `${DESIGN_HEIGHT}px` }}
+      >
+        {pageContent}
+      </div>
+    </div>
+  );
 }
 
 export default App;

@@ -109,3 +109,102 @@
 .landing-page--take-test-hover .rombuses--right {
 	opacity: 1;
 }
+
+@media (max-width: 1024px) {
+	.landing-page {
+		--rombuses-bleed: 0px;
+	}
+
+	.landing-page .sophisticated-skincare {
+		z-index: 2;
+		transform: translate(-50%, -50%);
+	}
+
+	.landing-page .landing-paragraph {
+		left: 50%;
+		top: calc(50% + 118px);
+		bottom: auto;
+		transform: translateX(-50%);
+		width: min(312px, calc(100vw - 32px));
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		z-index: 2;
+	}
+
+	.landing-page .landing-paragraph-svg {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.landing-page .landing-paragraph-svg path {
+		fill: #1a1b1c83;
+		stroke: #1a1b1c83;
+		stroke-width: 0.35;
+	}
+
+	.landing-page .discover-ai-button,
+	.landing-page .rectangle-2778,
+	.landing-page .rectangle-2779 {
+		display: none !important;
+	}
+
+	.landing-page .take-test-button {
+		left: calc(50% + 16px);
+		right: auto;
+		top: calc(50% + 192px);
+		transform: translateX(-50%);
+		opacity: 1;
+		pointer-events: auto;
+		z-index: 3;
+	}
+
+	.landing-page .rombuses {
+		opacity: 1;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+
+	.landing-page .rombuses--right {
+		display: none;
+	}
+
+	.landing-page--take-test-hover .sophisticated-skincare,
+	.landing-page--discover-hover .sophisticated-skincare {
+		transform: translate(-50%, -50%);
+	}
+
+	.landing-page--take-test-hover .sophisticated-skincare-title .title-line,
+	.landing-page--discover-hover .sophisticated-skincare-title .title-line {
+		transform: translateX(0);
+	}
+
+	.landing-page--discover-hover .take-test-button,
+	.landing-page--take-test-hover .take-test-button {
+		opacity: 1;
+		transform: translateX(-50%);
+		pointer-events: auto;
+	}
+}
+
+@media (max-width: 770px) {
+	.landing-page .landing-paragraph {
+		top: calc(50% + 40px);
+	}
+
+	.landing-page .landing-paragraph {
+		width: min(286px, calc(100vw - 28px));
+	}
+
+	.landing-page .take-test-button {
+		left: 50%;
+		top: calc(50% + 124px);
+	}
+
+	.landing-page .rombuses {
+		width: clamp(210px, 62vw, 430px);
+		height: clamp(210px, 62vw, 430px);
+	}
+}
