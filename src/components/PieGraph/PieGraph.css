@@ -4,18 +4,38 @@
 	left: 256px;
 	width: 1168px;
 	height: 544px;
+	aspect-ratio: 1168 / 544;
 	opacity: 1;
 	transform: rotate(0deg);
 }
 
-.pie-graph svg {
+.pie-graph-title {
+	position: absolute;
+	left: 36px;
+	top: 28px;
+	max-width: calc(100% - 72px);
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 38px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: 0;
+	color: #1a1b1c;
+	text-transform: uppercase;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	z-index: 2;
+}
+
+.pie-graph-image {
+	position: absolute;
+	inset: 0;
+}
+
+.pie-graph-image svg {
 	display: block;
 	width: 100%;
 	height: 100%;
-}
-
-.pie-graph svg > path:nth-of-type(2) {
-	fill: transparent;
 }
 
 .pie-graph-live-header {
@@ -24,7 +44,14 @@
 	font-weight: 500;
 	fill: #1a1b1c;
 	letter-spacing: 0;
-	
+}
+
+.pie-graph-live-header--mobile {
+	display: none;
+}
+
+.pie-graph-detail-path {
+	display: none;
 }
 
 .pie-graph-live-value {
@@ -51,5 +78,27 @@
 	font-size: 14px;
 	font-weight: 500;
 	fill: #1a1b1c;
-	
+}
+
+@media (max-width: 1024px) {
+	.pie-graph-title {
+		font-size: 30px;
+		left: 24px;
+		top: 20px;
+		max-width: calc(100% - 48px);
+	}
+}
+
+@media (max-width: 769px) {
+	.pie-graph-title {
+		display: none;
+	}
+
+	.pie-graph-live-header--mobile {
+		display: none;
+	}
+
+	.pie-graph-detail-path {
+		display: block;
+	}
 }

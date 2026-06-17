@@ -6,6 +6,7 @@
 	height: 24px;
 	opacity: 1;
 	transform: rotate(0deg);
+	z-index: 5;
 	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight: 400;
 	font-style: normal;
@@ -18,4 +19,26 @@
 	display: block;
 	color: #a0a4ab;
 	white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+	.demographics-page .update-text {
+		left: calc(50% - 17.5px);
+		transform: translateX(-50%);
+		width: min(317px, calc(100vw - 48px));
+		text-align: center;
+	}
+
+	.demographics-page .update-text-label {
+		white-space: normal;
+	}
+}
+
+@media (max-width: 769px) {
+	.demographics-page .update-text {
+		left: 50%;
+		transform: translateX(-50%);
+		width: min(300px, calc(100vw - 24px));
+		text-align: center;
+	}
 }
