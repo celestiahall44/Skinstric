@@ -1,7 +1,7 @@
 .rectangle-2778 {
 	position: absolute;
 	top: 179px;
-	left: 1619px;
+	right: -301px;
 	width: 602px;
 	height: 602px;
 	opacity: 1;
@@ -21,4 +21,13 @@
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	stroke-dasharray: 0.1 8;
+}
+
+@media (max-width: 768px) {
+	.rectangle-2778 {
+		top: 120px;
+		right: -220px;
+		width: 420px;
+		height: 420px;
+	}
 }

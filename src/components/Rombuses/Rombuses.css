@@ -14,3 +14,11 @@
 	height: 100%;
 	display: block;
 }
+
+@media (max-width: 768px) {
+	.rombuses {
+		top: 140px;
+		width: 420px;
+		height: 420px;
+	}
+}

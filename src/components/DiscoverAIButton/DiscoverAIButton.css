@@ -69,3 +69,24 @@
 	transform: rotate(-45deg);
 	margin-left: 1px;
 }
+
+@media (max-width: 768px) {
+	.discover-ai-button {
+		top: auto;
+		bottom: 56px;
+		left: 24px;
+		width: auto;
+	}
+}
+
+@media (max-width: 480px) {
+	.discover-ai-button {
+		left: 16px;
+		bottom: 28px;
+		gap: 12px;
+	}
+
+	.discover-ai-button-label {
+		font-size: 12px;
+	}
+}

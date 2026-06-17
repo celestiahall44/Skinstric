@@ -22,3 +22,12 @@
 	stroke-linejoin: round;
 	stroke-dasharray: 0.1 8;
 }
+
+@media (max-width: 768px) {
+	.rectangle-2779 {
+		top: 120px;
+		left: -220px;
+		width: 420px;
+		height: 420px;
+	}
+}

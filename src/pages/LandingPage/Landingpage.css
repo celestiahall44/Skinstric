@@ -1,13 +1,25 @@
 .landing-page {
-	height: 100vh;
+	min-height: 100vh;
+	min-height: 100svh;
 	position: relative;
 	overflow: hidden;
 	background: #fcfcfc;
 	--skincare-slide-duration: 850ms;
 	--rombuses-bleed: 381px;
+	--skincare-safe-width: min(680px, calc(100vw - 220px));
+	--skincare-safe-shift: clamp(0px, calc(50vw - (var(--skincare-safe-width) / 2) - 32px), 260px);
+}
+
+.landing-page .landing-centered-hero {
+	display: contents;
+}
+
+.landing-page .landing-centered-hero-content {
+	display: contents;
 }
 
 .landing-page .sophisticated-skincare {
+	width: var(--skincare-safe-width);
 	transform: translate(-50%, -50%);
 	transition: transform var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -26,15 +38,15 @@
 }
 
 .landing-page--take-test-hover .sophisticated-skincare {
-	transform: translate(calc(-50% - 260px), -50%);
+	transform: translate(calc(-50% - var(--skincare-safe-shift)), -50%);
 }
 
 .landing-page--take-test-hover .sophisticated-skincare-title .title-line:first-child {
-	transform: translateX(-18px);
+	transform: translateX(clamp(-18px, calc(var(--skincare-safe-shift) * -0.07), 0px));
 }
 
 .landing-page--take-test-hover .sophisticated-skincare-title .title-line:last-child {
-	transform: translateX(-96px);
+	transform: translateX(clamp(-96px, calc(var(--skincare-safe-shift) * -0.37), 0px));
 }
 
 .landing-page--take-test-hover .discover-ai-button,
@@ -54,22 +66,22 @@
 }
 
 .landing-page--discover-hover .sophisticated-skincare {
-	transform: translate(calc(-50% + 260px), -50%);
+	transform: translate(calc(-50% + var(--skincare-safe-shift)), -50%);
 }
 
 .landing-page--discover-hover .sophisticated-skincare-title .title-line:first-child {
-	transform: translateX(18px);
+	transform: translateX(clamp(0px, calc(var(--skincare-safe-shift) * 0.07), 18px));
 }
 
 .landing-page--discover-hover .sophisticated-skincare-title .title-line:last-child {
-	transform: translateX(96px);
+	transform: translateX(clamp(0px, calc(var(--skincare-safe-shift) * 0.37), 96px));
 }
 
 .landing-page .take-test-button,
 .landing-page .rectangle-2778 {
 	opacity: 1;
 	transform: translateX(0);
-	transition: opacity var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1), transform var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
+	transition: opacity var(--skincare-slide-duration) cubic-bezier(0.2, 0.8, 0.2, 1);
 	transition-delay: 0ms;
 }
 
@@ -112,99 +124,270 @@
 
 @media (max-width: 1024px) {
 	.landing-page {
-		--rombuses-bleed: 0px;
+		--rombuses-bleed: 300px;
+		--landing-centered-hero-top: 50%;
+		--landing-centered-rhombus-size: 600px;
+		--landing-centered-paragraph-offset: 118px;
+		--landing-centered-button-offset: 196px;
 	}
 
-	.landing-page .sophisticated-skincare {
-		z-index: 2;
-		transform: translate(-50%, -50%);
-	}
-
-	.landing-page .landing-paragraph {
-		left: 50%;
-		top: calc(50% + 118px);
-		bottom: auto;
-		transform: translateX(-50%);
-		width: min(312px, calc(100vw - 32px));
-		display: flex;
-		justify-content: center;
-		text-align: center;
-		z-index: 2;
-	}
-
-	.landing-page .landing-paragraph-svg {
-		display: block;
-		margin: 0 auto;
-	}
-
-	.landing-page .landing-paragraph-svg path {
-		fill: #1a1b1c83;
-		stroke: #1a1b1c83;
-		stroke-width: 0.35;
-	}
-
-	.landing-page .discover-ai-button,
 	.landing-page .rectangle-2778,
-	.landing-page .rectangle-2779 {
-		display: none !important;
-	}
-
-	.landing-page .take-test-button {
-		left: calc(50% + 16px);
-		right: auto;
-		top: calc(50% + 192px);
-		transform: translateX(-50%);
-		opacity: 1;
-		pointer-events: auto;
-		z-index: 3;
-	}
-
-	.landing-page .rombuses {
-		opacity: 1;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 1;
-	}
-
-	.landing-page .rombuses--right {
+	.landing-page .rectangle-2779,
+	.landing-page--take-test-hover .rectangle-2778,
+	.landing-page--take-test-hover .rectangle-2779,
+	.landing-page--discover-hover .rectangle-2778,
+	.landing-page--discover-hover .rectangle-2779 {
 		display: none;
 	}
 
+	.landing-page .sophisticated-skincare,
 	.landing-page--take-test-hover .sophisticated-skincare,
 	.landing-page--discover-hover .sophisticated-skincare {
-		transform: translate(-50%, -50%);
+		top: var(--landing-centered-hero-top);
+		left: 50%;
+		width: min(100%, 560px);
+		padding: 0 24px;
+		transform: translate(-50%, -50%) !important;
+		transition: none !important;
 	}
 
+	.landing-page .sophisticated-skincare-title .title-line,
 	.landing-page--take-test-hover .sophisticated-skincare-title .title-line,
 	.landing-page--discover-hover .sophisticated-skincare-title .title-line {
-		transform: translateX(0);
+		transform: translateX(0) !important;
+		transition: none !important;
 	}
 
-	.landing-page--discover-hover .take-test-button,
-	.landing-page--take-test-hover .take-test-button {
-		opacity: 1;
-		transform: translateX(-50%);
-		pointer-events: auto;
-	}
-}
-
-@media (max-width: 770px) {
-	.landing-page .landing-paragraph {
-		top: calc(50% + 40px);
+	.landing-page .sophisticated-skincare-title,
+	.landing-page--take-test-hover .sophisticated-skincare-title,
+	.landing-page--discover-hover .sophisticated-skincare-title {
+		animation: none;
+		font-size: clamp(84px, 10vw, 104px);
+		line-height: clamp(78px, 9vw, 96px);
+		transition: none !important;
 	}
 
-	.landing-page .landing-paragraph {
-		width: min(286px, calc(100vw - 28px));
+	.landing-page .discover-ai-button,
+	.landing-page--take-test-hover .discover-ai-button,
+	.landing-page--discover-hover .discover-ai-button {
+		display: none;
 	}
 
-	.landing-page .take-test-button {
+	.landing-page .take-test-button,
+	.landing-page--take-test-hover .take-test-button,
+	.landing-page--discover-hover .take-test-button {
 		left: 50%;
-		top: calc(50% + 124px);
+		right: auto;
+		top: calc(var(--landing-centered-hero-top) + var(--landing-centered-button-offset));
+		bottom: auto;
+		transform: translate(-50%, -50%);
+		opacity: 1;
+		justify-content: center;
+		pointer-events: auto;
+		transition: none !important;
+	}
+
+	.landing-page .take-test-button-label,
+	.landing-page--take-test-hover .take-test-button-label,
+	.landing-page--discover-hover .take-test-button-label {
+		font-weight: 600;
+	}
+
+	.landing-page .take-test-button-icon,
+	.landing-page--take-test-hover .take-test-button-icon,
+	.landing-page--discover-hover .take-test-button-icon {
+		border-width: 2px;
+	}
+
+	.landing-page .take-test-button-triangle,
+	.landing-page--take-test-hover .take-test-button-triangle,
+	.landing-page--discover-hover .take-test-button-triangle {
+		border-left-width: 7px;
+		border-top-width: 5px;
+		border-bottom-width: 5px;
+	}
+
+	.landing-page .landing-paragraph,
+	.landing-page--take-test-hover .landing-paragraph,
+	.landing-page--discover-hover .landing-paragraph {
+		left: 50%;
+		top: calc(var(--landing-centered-hero-top) + var(--landing-centered-paragraph-offset));
+		bottom: auto;
+		width: min(360px, calc(100vw - 64px));
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+
+	.landing-page .landing-paragraph-svg path,
+	.landing-page .landing-paragraph-svg rect,
+	.landing-page .landing-paragraph-svg circle,
+	.landing-page .landing-paragraph-svg ellipse,
+	.landing-page .landing-paragraph-svg polygon {
+		fill: rgba(26, 27, 28, 0.46);
+		stroke: rgba(26, 27, 28, 0.46);
+		stroke-width: 1.2;
 	}
 
 	.landing-page .rombuses {
-		width: clamp(210px, 62vw, 430px);
-		height: clamp(210px, 62vw, 430px);
+		opacity: 0;
+	}
+
+	.landing-page .rombuses--left,
+	.landing-page--take-test-hover .rombuses--left,
+	.landing-page--discover-hover .rombuses--left {
+		display: block;
+		opacity: 1;
+		top: var(--landing-centered-hero-top);
+		left: 50%;
+		width: var(--landing-centered-rhombus-size);
+		height: var(--landing-centered-rhombus-size);
+		transform: translate(-50%, -50%);
+	}
+
+	.landing-page .rombuses--right,
+	.landing-page--take-test-hover .rombuses--right,
+	.landing-page--discover-hover .rombuses--right {
+		display: none;
+	}
+}
+
+@media (max-width: 769px) {
+	.landing-page {
+		--rombuses-bleed: 190px;
+		--landing-centered-hero-top: 50%;
+		--landing-centered-rhombus-size: 468px;
+	}
+
+	.landing-page .landing-centered-hero {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: clamp(290px, 92vw, var(--landing-centered-rhombus-size));
+		height: clamp(290px, 92vw, var(--landing-centered-rhombus-size));
+		transform: translate(-50%, -50%);
+		transform-origin: center center;
+		display: block;
+		overflow: visible;
+		z-index: 1;
+	}
+
+	.landing-page .landing-centered-hero-content,
+	.landing-page--take-test-hover .landing-centered-hero-content,
+	.landing-page--discover-hover .landing-centered-hero-content {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 18px;
+		z-index: 2;
+	}
+
+	.landing-page .landing-centered-hero-content > *,
+	.landing-page--take-test-hover .landing-centered-hero-content > *,
+	.landing-page--discover-hover .landing-centered-hero-content > * {
+		flex: 0 0 auto;
+		margin: 0;
+	}
+
+	.landing-page .landing-centered-hero-content .sophisticated-skincare,
+	.landing-page--take-test-hover .landing-centered-hero-content .sophisticated-skincare,
+	.landing-page--discover-hover .landing-centered-hero-content .sophisticated-skincare {
+		position: static !important;
+		top: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+		width: 75% !important;
+		height: auto !important;
+		padding: 0 !important;
+		transform: none !important;
+		margin: 0 auto !important;
+		z-index: 2;
+	}
+
+	.landing-page .landing-centered-hero-content .sophisticated-skincare-title,
+	.landing-page--take-test-hover .landing-centered-hero-content .sophisticated-skincare-title,
+	.landing-page--discover-hover .landing-centered-hero-content .sophisticated-skincare-title {
+		font-size: clamp(40px, 13vw, 64px);
+		line-height: clamp(38px, 12vw, 60px);
+	}
+
+	.landing-page .discover-ai-button,
+	.landing-page .take-test-button,
+	.landing-page .landing-paragraph {
+		z-index: 2;
+	}
+
+	.landing-page .landing-centered-hero-content .take-test-button,
+	.landing-page--take-test-hover .landing-centered-hero-content .take-test-button,
+	.landing-page--discover-hover .landing-centered-hero-content .take-test-button {
+		position: static !important;
+		top: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+		width: auto !important;
+		height: auto !important;
+		margin: 8px auto 0 !important;
+		opacity: 1;
+		transform: none !important;
+		justify-content: center !important;
+		gap: 14px !important;
+		pointer-events: auto;
+	}
+
+	.landing-page .take-test-button-label,
+	.landing-page--take-test-hover .take-test-button-label,
+	.landing-page--discover-hover .take-test-button-label {
+		font-size: clamp(11px, 3vw, 13px);
+	}
+
+	.landing-page .take-test-button-icon,
+	.landing-page--take-test-hover .take-test-button-icon,
+	.landing-page--discover-hover .take-test-button-icon {
+		width: clamp(20px, 5vw, 24px);
+		height: clamp(20px, 5vw, 24px);
+	}
+
+	.landing-page .take-test-button-triangle,
+	.landing-page--take-test-hover .take-test-button-triangle,
+	.landing-page--discover-hover .take-test-button-triangle {
+		border-top-width: 3px;
+		border-bottom-width: 3px;
+		border-left-width: 5px;
+	}
+
+	.landing-page .landing-centered-hero-content .landing-paragraph,
+	.landing-page--take-test-hover .landing-centered-hero-content .landing-paragraph,
+	.landing-page--discover-hover .landing-centered-hero-content .landing-paragraph {
+		position: static !important;
+		top: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+		width: 62.5% !important;
+		height: auto !important;
+		margin: 0 auto !important;
+		transform: none !important;
+	}
+
+	.landing-page .landing-paragraph .ai-paragraph-svg,
+	.landing-page--take-test-hover .landing-paragraph .ai-paragraph-svg,
+	.landing-page--discover-hover .landing-paragraph .ai-paragraph-svg {
+		transform: scale(0.68);
+		transform-origin: top center;
+	}
+
+	.landing-page .rombuses--left,
+	.landing-page--take-test-hover .rombuses--left,
+	.landing-page--discover-hover .rombuses--left {
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
 	}
 }

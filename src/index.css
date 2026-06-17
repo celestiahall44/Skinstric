@@ -10,16 +10,10 @@ body {
 html,
 body,
 #root {
-  height: 100%;
-}
-
-@media (max-width: 1024px) {
-  html,
-  body,
-  #root {
-    overflow: hidden;
-    overscroll-behavior: none;
-  }
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 code {

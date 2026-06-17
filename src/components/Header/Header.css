@@ -1,46 +1,24 @@
 .site-header {
-	--header-side-pad: 32px;
-	--header-enter-width: 92px;
-	--header-enter-height: 32px;
-	--header-enter-top: 15px;
 	position: relative;
 	width: 100%;
-	max-width: 1920px;
 	height: 64px;
-	min-height: 52px;
 	opacity: 1;
 	transform: rotate(0deg);
 	margin: 0 auto;
 	overflow: hidden;
 	background: #fcfcfc;
-	isolation: isolate;
-	z-index: 100;
-}
-
-.site-header--hide-enter-code::after {
-	content: '';
-	position: absolute;
-	top: var(--header-enter-top);
-	right: var(--header-side-pad);
-	width: var(--header-enter-width);
-	height: var(--header-enter-height);
-	background: #fcfcfc;
-	pointer-events: none;
-	z-index: 2;
 }
 
 .site-header-image {
 	display: block;
-	width: 100%;
+	width: auto;
 	height: 100%;
-	object-fit: cover;
-	object-position: left center;
 }
 
 .site-header-home-link {
 	position: absolute;
 	top: 0;
-	left: var(--header-side-pad);
+	left: 32px;
 	width: 82px;
 	height: 100%;
 	cursor: pointer;
@@ -52,29 +30,24 @@
 	outline-offset: -2px;
 }
 
-.site-header-enter-code-blocker {
+.site-header-enter-code {
 	position: absolute;
-	top: var(--header-enter-top);
-	right: var(--header-side-pad);
-	width: var(--header-enter-width);
-	height: var(--header-enter-height);
-	background: transparent;
-	border: 0;
-	padding: 0;
+	top: 15px;
+	right: 32px;
+	width: 92px;
+	height: 32px;
+	background: #1A1B1C;
 	z-index: 3;
-	cursor: default;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-@media (max-width: 1024px) {
-	.site-header {
-		--header-side-pad: 16px;
-		--header-enter-width: 84px;
-		--header-enter-height: 30px;
-		--header-enter-top: 12px;
-		height: clamp(52px, 8vw, 56px);
-	}
-
-	.site-header-home-link {
-		width: 72px;
-	}
+.site-header-enter-code-label {
+	color: #FCFCFC;
+	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	line-height: 1;
 }

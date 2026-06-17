@@ -49,8 +49,41 @@
 }
 
 @media (max-width: 768px) {
+	.sophisticated-skincare {
+		width: min(100%, 360px);
+		height: auto;
+		padding: 0 20px;
+	}
+
 	.sophisticated-skincare-title {
 		font-size: 64px;
 		line-height: 60px;
+	}
+}
+
+@media (max-width: 480px) {
+	.sophisticated-skincare-title {
+		font-size: 48px;
+		line-height: 46px;
+	}
+}
+
+@media (max-width: 769px) {
+	.landing-page .landing-centered-hero-content .sophisticated-skincare {
+		position: static !important;
+		top: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+		width: 75% !important;
+		height: auto !important;
+		padding: 0 !important;
+		transform: none !important;
+		margin: 0 auto !important;
+	}
+
+	.landing-page .landing-centered-hero-content .sophisticated-skincare-title {
+		font-size: 64px !important;
+		line-height: 60px !important;
 	}
 }
