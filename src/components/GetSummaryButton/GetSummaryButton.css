@@ -39,3 +39,37 @@
 .get-summary-button:focus-visible .get-summary-button-icon {
 	transform: scale(1.12);
 }
+
+@media (max-width: 1024px) {
+	.ai-analysis-page .get-summary-button {
+		top: auto;
+		bottom: 20px;
+		right: 24px;
+		width: auto;
+		height: 56px;
+		gap: 12px;
+	}
+
+	.ai-analysis-page .get-summary-button-icon {
+		width: 56px;
+		height: 56px;
+	}
+}
+
+@media (max-width: 769px) {
+	.ai-analysis-page .get-summary-button {
+		bottom: 16px;
+		right: 16px;
+		height: 48px;
+		gap: 10px;
+	}
+
+	.ai-analysis-page .get-summary-button-label {
+		font-size: 12px;
+	}
+
+	.ai-analysis-page .get-summary-button-icon {
+		width: 48px;
+		height: 48px;
+	}
+}

@@ -23,3 +23,21 @@
 	display: block;
 	flex-shrink: 0;
 }
+
+@media (max-width: 1024px) {
+	.options-page .to-start-analysis {
+		top: 84px;
+		left: 24px;
+	}
+}
+
+@media (max-width: 769px) {
+	.options-page .to-start-analysis {
+		top: 84px;
+		left: 50%;
+		width: min(227px, calc(100vw - 32px));
+		transform: translateX(-50%);
+		justify-content: center;
+		text-align: center;
+	}
+}

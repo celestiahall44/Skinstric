@@ -1,11 +1,11 @@
 .click-to-type {
 	position: absolute;
-	top: 422px;
-	left: 905px;
+	top: calc(var(--intro-rhombus-center-y) + var(--intro-click-offset));
+	left: 50%;
 	width: 96px;
 	height: 24px;
 	opacity: 0.4;
-	transform: rotate(0deg);
+	transform: translate(-50%, -50%);
 	color: #1A1B1C;
 	font-family: 'Roobert TRIAL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight: 400;
@@ -15,6 +15,7 @@
 	text-transform: uppercase;
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .click-to-type-svg {
@@ -27,4 +28,31 @@
 body.introduction-submitting .click-to-type {
 	opacity: 0;
 	visibility: hidden;
+}
+
+@media (max-width: 1024px) {
+	.introduction-page .click-to-type {
+		top: calc(var(--intro-rhombus-center-y) + var(--intro-click-offset));
+		left: 50%;
+		width: clamp(84px, 12vw, 96px);
+		height: auto;
+		font-size: clamp(12px, 1.4vw, 14px);
+		line-height: clamp(18px, 2vw, 24px);
+		transform: translate(-50%, -50%);
+		justify-content: center;
+	}
+
+	.introduction-page .click-to-type-svg {
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media (max-width: 769px) {
+	.introduction-page .click-to-type {
+		top: calc(var(--intro-rhombus-center-y) + var(--intro-click-offset));
+		width: clamp(72px, 22vw, 92px);
+		font-size: clamp(11px, 3vw, 13px);
+		line-height: clamp(16px, 4vw, 20px);
+	}
 }

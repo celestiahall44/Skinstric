@@ -4,6 +4,9 @@
 	display: flex;
 	flex-direction: column;
 	background: #fcfcfc;
+	--intro-rhombus-center-y: 50%;
+	--intro-click-offset: -54px;
+	--intro-field-offset: 18px;
 }
 
 .introduction-content {
@@ -63,5 +66,29 @@
 @media (prefers-reduced-motion: reduce) {
 	.introduction-page .rombuses-ring {
 		animation: none;
+	}
+}
+
+@media (max-width: 1024px) {
+	.introduction-page {
+		--intro-click-offset: -52px;
+		--intro-field-offset: 18px;
+	}
+
+	.introduction-page .rombuses {
+		width: min(620px, 82vw);
+		height: min(620px, 82vw);
+	}
+}
+
+@media (max-width: 769px) {
+	.introduction-page {
+		--intro-click-offset: -44px;
+		--intro-field-offset: 12px;
+	}
+
+	.introduction-page .rombuses {
+		width: min(420px, 92vw);
+		height: min(420px, 92vw);
 	}
 }

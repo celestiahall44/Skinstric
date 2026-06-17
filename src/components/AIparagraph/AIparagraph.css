@@ -32,3 +32,25 @@
 		height: auto;
 	}
 }
+
+@media (max-width: 1024px) {
+	.ai-analysis-page .ai-paragraph {
+		top: 118px;
+		left: 24px;
+		width: min(320px, calc(100vw - 48px));
+	}
+}
+
+@media (max-width: 769px) {
+	.ai-analysis-page .ai-paragraph {
+		top: 116px;
+		left: 50%;
+		width: min(308px, calc(100vw - 32px));
+		transform: translateX(-50%);
+	}
+
+	.ai-analysis-page .ai-paragraph-svg {
+		transform: scale(0.74);
+		transform-origin: top center;
+	}
+}

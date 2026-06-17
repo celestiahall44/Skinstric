@@ -73,3 +73,23 @@
 		animation: none;
 	}
 }
+
+@media (min-width: 770px) and (max-width: 1024px) {
+	.options-page .camera {
+		top: 32%;
+		left: 50%;
+		width: min(340px, calc(100vw - 140px));
+		height: auto;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@media (max-width: 769px) {
+	.options-page .camera {
+		top: 34%;
+		left: 50%;
+		width: min(300px, calc(100vw - 48px));
+		height: auto;
+		transform: translate(-50%, -50%);
+	}
+}

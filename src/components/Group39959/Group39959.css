@@ -2,8 +2,8 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 450px;
-	height: 450px;
+	width: var(--ai-analysis-diagram-size, 450px);
+	height: var(--ai-analysis-diagram-size, 450px);
 	border: 0.1px solid #FCFCFC;
 	opacity: 1;
 	transform: translate(-50%, -50%) rotate(0deg);
@@ -48,5 +48,11 @@
 
 .group-39959-disabled:hover rect {
 	opacity: 1;
+}
+
+@media (max-width: 769px) {
+	.group-39959 {
+		top: 48%;
+	}
 }
 

@@ -1,12 +1,17 @@
 .ai-analysis-page {
 	position: relative;
 	min-height: 100vh;
+	min-height: 100svh;
 	background: #fcfcfc;
+	--ai-analysis-rhombus-size: 762px;
+	--ai-analysis-diagram-size: 450px;
 }
 
 .ai-analysis-page .rombuses {
 	top: 50%;
 	left: 50%;
+	width: var(--ai-analysis-rhombus-size);
+	height: var(--ai-analysis-rhombus-size);
 	transform: translate(-50%, -50%);
 }
 
@@ -67,5 +72,19 @@ body.ai-analysis-hover-layer-3 .ai-analysis-page .rombuses-ring-3 {
 @media (prefers-reduced-motion: reduce) {
 	.ai-analysis-page .rombuses-ring {
 		animation: none;
+	}
+}
+
+@media (max-width: 1024px) {
+	.ai-analysis-page {
+		--ai-analysis-rhombus-size: min(620px, 78vw);
+		--ai-analysis-diagram-size: min(390px, 60vw);
+	}
+}
+
+@media (max-width: 769px) {
+	.ai-analysis-page {
+		--ai-analysis-rhombus-size: min(420px, 92vw);
+		--ai-analysis-diagram-size: min(320px, 82vw);
 	}
 }
