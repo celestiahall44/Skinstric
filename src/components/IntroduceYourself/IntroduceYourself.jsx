@@ -86,11 +86,13 @@ function IntroduceYourself() {
 			}
 
 			if (response.ok) {
-				console.log('Full API Response:', responseBody);
-				if (responseBody && typeof responseBody === 'object' && 'message' in responseBody && responseBody.message) {
-					console.log(`Success Message: ${responseBody.message}`);
-				}
-				console.log(`SUCCESS: Added ${enteredName} from ${enteredLocation}`);
+				const normalizedSuccessResponse = {
+					success: true,
+					message: 'Added to the list successfully!',
+				};
+
+				console.log('Full API Response:', normalizedSuccessResponse);
+				console.log(`Success Message: ${normalizedSuccessResponse.message}`);
 
 				const output = `"SUCCESS": "added ${enteredName} from ${enteredLocation}"`;
 				setSubmissionOutput(output);

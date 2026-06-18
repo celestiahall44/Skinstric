@@ -9,20 +9,6 @@ import PhaseTwoLoading from '../../components/PhaseTwoLoading/PhaseTwoLoading';
 
 const PHASE_TWO_ENDPOINT = 'https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo';
 const MIN_LOADING_DURATION_MS = 5000;
-const CAMERA_PERMISSION_STORAGE_KEY = 'skinstricCameraPermission';
-
-function readStoredCameraPermission() {
-	try {
-		const value = window.localStorage.getItem(CAMERA_PERMISSION_STORAGE_KEY);
-		if (value === 'allowed' || value === 'denied') {
-			return value;
-		}
-	} catch {
-		return 'unknown';
-	}
-
-	return 'unknown';
-}
 
 function Options({ onAnalysisComplete, onCameraPermissionAllow }) {
 	const fileInputRef = useRef(null);
@@ -31,7 +17,6 @@ function Options({ onAnalysisComplete, onCameraPermissionAllow }) {
 	const [loadingPreviewSrc, setLoadingPreviewSrc] = useState('');
 	const [uploadResult, setUploadResult] = useState(null);
 	const [showCameraPermissionDialog, setShowCameraPermissionDialog] = useState(false);
-	const [cameraPermissionStatus, setCameraPermissionStatus] = useState(() => readStoredCameraPermission());
 
 	const fileToBase64 = (file) =>
 		new Promise((resolve, reject) => {
@@ -101,24 +86,11 @@ function Options({ onAnalysisComplete, onCameraPermissionAllow }) {
 	};
 
 	const handleCameraClick = () => {
-		if (cameraPermissionStatus === 'allowed') {
-			if (onCameraPermissionAllow) {
-				onCameraPermissionAllow();
-			}
-			return;
-		}
-
 		setShowCameraPermissionDialog(true);
 	};
 
 	const handleCameraPermissionAllow = () => {
 		setShowCameraPermissionDialog(false);
-		setCameraPermissionStatus('allowed');
-		try {
-			window.localStorage.setItem(CAMERA_PERMISSION_STORAGE_KEY, 'allowed');
-		} catch {
-			// Ignore storage write failures.
-		}
 		setUploadPhase('idle');
 		setUploadError('');
 		setUploadResult(null);
@@ -130,12 +102,6 @@ function Options({ onAnalysisComplete, onCameraPermissionAllow }) {
 
 	const handleCameraPermissionDeny = () => {
 		setShowCameraPermissionDialog(false);
-		setCameraPermissionStatus('denied');
-		try {
-			window.localStorage.setItem(CAMERA_PERMISSION_STORAGE_KEY, 'denied');
-		} catch {
-			// Ignore storage write failures.
-		}
 	};
 
 	const handleFileSelection = async (event) => {
