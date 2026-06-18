@@ -1,6 +1,6 @@
 import './Gallery.css';
 
-function Gallery({ href = '#', onClick }) {
+function Gallery({ href = '/', onClick }) {
 	const handleClick = (event) => {
 		if (!onClick) {
 			return;

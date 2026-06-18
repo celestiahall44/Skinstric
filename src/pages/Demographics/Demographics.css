@@ -121,7 +121,7 @@
 		--demographics-confidence-height: 386px;
 		--demographics-pie-fixed-width: 832px;
 		--demographics-pie-fixed-height: 387px;
-		--demographics-pie-width: calc(min(calc(var(--demographics-right-total-width) - var(--demographics-confidence-width) - var(--demographics-right-stack-gap)), calc(var(--demographics-desktop-chart-width) * 0.9)));
+		--demographics-pie-width: min(calc(var(--demographics-right-total-width) - var(--demographics-confidence-width) - var(--demographics-right-stack-gap)), calc(var(--demographics-desktop-chart-width) * 0.9));
 	}
 
 	.demographics-page .race-thumbnail,

@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import './Group39959.css';
 
-function Group39959({ onDemographicsClick }) {
-	const hoverLayerClasses = [
-		'ai-analysis-hover-layer-1',
-		'ai-analysis-hover-layer-2',
-		'ai-analysis-hover-layer-3',
-	];
+const HOVER_LAYER_CLASSES = [
+	'ai-analysis-hover-layer-1',
+	'ai-analysis-hover-layer-2',
+	'ai-analysis-hover-layer-3',
+];
 
+function Group39959({ onDemographicsClick }) {
 	const setHoverLayer = (layer) => {
-		hoverLayerClasses.forEach((className) => document.body.classList.remove(className));
+		HOVER_LAYER_CLASSES.forEach((className) => document.body.classList.remove(className));
 
 		if (layer >= 1 && layer <= 3) {
 			document.body.classList.add(`ai-analysis-hover-layer-${layer}`);
@@ -18,7 +18,7 @@ function Group39959({ onDemographicsClick }) {
 
 	useEffect(() => {
 		return () => {
-			hoverLayerClasses.forEach((className) => document.body.classList.remove(className));
+			HOVER_LAYER_CLASSES.forEach((className) => document.body.classList.remove(className));
 		};
 	}, []);
 
@@ -45,8 +45,9 @@ function Group39959({ onDemographicsClick }) {
 
 			{/* Left Section */}
 			<a
-				href="#"
+				href="/"
 				className="group-39959-link group-39959-disabled"
+				onClick={(event) => event.preventDefault()}
 				onMouseEnter={() => setHoverLayer(2)}
 				onMouseLeave={() => setHoverLayer(0)}
 				onFocus={() => setHoverLayer(2)}
@@ -58,8 +59,9 @@ function Group39959({ onDemographicsClick }) {
 
 			{/* Right Section */}
 			<a
-				href="#"
+				href="/"
 				className="group-39959-link group-39959-disabled"
+				onClick={(event) => event.preventDefault()}
 				onMouseEnter={() => setHoverLayer(2)}
 				onMouseLeave={() => setHoverLayer(0)}
 				onFocus={() => setHoverLayer(2)}
@@ -71,8 +73,9 @@ function Group39959({ onDemographicsClick }) {
 
 			{/* Center Section - Weather */}
 			<a
-				href="#"
+				href="/"
 				className="group-39959-link group-39959-disabled"
+				onClick={(event) => event.preventDefault()}
 				onMouseEnter={() => setHoverLayer(3)}
 				onMouseLeave={() => setHoverLayer(0)}
 				onFocus={() => setHoverLayer(3)}

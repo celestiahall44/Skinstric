@@ -72,14 +72,6 @@ function IntroduceYourself() {
 			});
 
 			const responseText = await response.text();
-			let responseBody = null;
-			if (responseText.trim()) {
-				try {
-					responseBody = JSON.parse(responseText);
-				} catch {
-					responseBody = { rawResponse: responseText };
-				}
-			}
 
 			if (!response.ok) {
 				throw new Error(responseText || 'Failed to submit profile.');

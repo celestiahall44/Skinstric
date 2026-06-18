@@ -31,8 +31,9 @@ function Demographics({ phaseTwoResult }) {
 	const topSex = sexRows.length > 0 ? sexRows[0] : null;
 
 	useEffect(() => {
+		const nextTopRace = buildRaceRowsFromResponse(phaseTwoResult)[0] || null;
 		setSelectedDemographic('race');
-		setSelectedPredictionRow(topRace ? { section: 'race', label: topRace.label, confidence: topRace.confidence } : null);
+		setSelectedPredictionRow(nextTopRace ? { section: 'race', label: nextTopRace.label, confidence: nextTopRace.confidence } : null);
 	}, [phaseTwoResult]);
 
 	const handleBackClick = () => {
