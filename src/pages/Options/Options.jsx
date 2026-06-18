@@ -201,6 +201,7 @@ function Options({ onAnalysisComplete, onCameraPermissionAllow }) {
 			}
 
 			setUploadResult(parsedUploadResult);
+			console.log('API response:', parsedUploadResult);
 
 			uploadSucceeded = true;
 		} catch (error) {

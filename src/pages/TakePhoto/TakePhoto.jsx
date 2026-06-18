@@ -192,6 +192,7 @@ function TakePhoto({ onLogoClick, onBack, onAnalysisComplete }) {
 			}
 
 			setAnalysisResult(parsedResult);
+			console.log('API response:', parsedResult);
 			uploadSucceeded = true;
 		} catch (error) {
 			setSubmitError(error instanceof Error ? error.message : 'Analysis failed.');

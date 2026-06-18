@@ -71,7 +71,27 @@ function IntroduceYourself() {
 				body: JSON.stringify(profile),
 			});
 
+			const responseText = await response.text();
+			let responseBody = null;
+			if (responseText.trim()) {
+				try {
+					responseBody = JSON.parse(responseText);
+				} catch {
+					responseBody = { rawResponse: responseText };
+				}
+			}
+
+			if (!response.ok) {
+				throw new Error(responseText || 'Failed to submit profile.');
+			}
+
 			if (response.ok) {
+				console.log('Full API Response:', responseBody);
+				if (responseBody && typeof responseBody === 'object' && 'message' in responseBody && responseBody.message) {
+					console.log(`Success Message: ${responseBody.message}`);
+				}
+				console.log(`SUCCESS: Added ${enteredName} from ${enteredLocation}`);
+
 				const output = `"SUCCESS": "added ${enteredName} from ${enteredLocation}"`;
 				setSubmissionOutput(output);
 				localStorage.setItem('skinstricSubmissionOutput', output);

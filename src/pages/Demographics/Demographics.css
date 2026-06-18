@@ -25,6 +25,158 @@
 	letter-spacing: -0.02em;
 }
 
+@media (min-width: 1026px) {
+	.demographics-page {
+		--demographics-desktop-gutter: clamp(24px, 2vw, 32px);
+		--demographics-desktop-gap: clamp(16px, 1.6vw, 24px);
+		--demographics-desktop-thumb-width: clamp(160px, 14vw, 208px);
+		--demographics-desktop-confidence-width: clamp(280px, 24vw, 448px);
+		--demographics-desktop-chart-left: calc(var(--demographics-desktop-gutter) + var(--demographics-desktop-thumb-width) + var(--demographics-desktop-gap));
+		--demographics-desktop-chart-width: calc(100vw - (var(--demographics-desktop-gutter) * 2) - var(--demographics-desktop-thumb-width) - var(--demographics-desktop-confidence-width) - (var(--demographics-desktop-gap) * 2));
+	}
+
+	.demographics-page .ai-header-text {
+		top: 84px;
+		left: var(--demographics-desktop-gutter);
+	}
+
+	.demographics-page .demographics-large {
+		top: 110px;
+		left: var(--demographics-desktop-gutter);
+		width: min(505px, calc(100vw - (var(--demographics-desktop-gutter) * 2)));
+		height: auto;
+	}
+
+	.demographics-page .prediction-text {
+		top: 170px;
+		left: var(--demographics-desktop-gutter);
+	}
+
+	.demographics-page .race-thumbnail,
+	.demographics-page .age-thumbnail,
+	.demographics-page .sex-thumbnail {
+		left: var(--demographics-desktop-gutter);
+		width: var(--demographics-desktop-thumb-width);
+		height: auto;
+	}
+
+	.demographics-page .race-thumbnail {
+		top: 304px;
+	}
+
+	.demographics-page .age-thumbnail {
+		top: 416px;
+	}
+
+	.demographics-page .sex-thumbnail {
+		top: 528px;
+	}
+
+	.demographics-page .pie-graph {
+		top: 304px;
+		left: var(--demographics-desktop-chart-left);
+		width: min(1168px, var(--demographics-desktop-chart-width));
+		height: auto;
+		transform: none;
+	}
+
+	.demographics-page .ai-confidence {
+		top: 304px;
+		left: auto;
+		right: var(--demographics-desktop-gutter);
+		width: var(--demographics-desktop-confidence-width);
+		height: min(calc(min(1168px, var(--demographics-desktop-chart-width)) * 544 / 1168), calc(100vh - 394px));
+		transform: none;
+		overflow: auto;
+	}
+
+	.demographics-page .update-text {
+		top: auto;
+		bottom: 30px;
+		left: calc(50% - 17.5px);
+		width: min(317px, calc(100vw - 48px));
+		transform: translateX(-50%);
+		text-align: center;
+	}
+
+	.demographics-page .back-button {
+		top: auto;
+		bottom: 20px;
+		left: var(--demographics-desktop-gutter);
+	}
+
+	.demographics-page .home-button {
+		top: auto;
+		bottom: 20px;
+		right: var(--demographics-desktop-gutter);
+	}
+}
+
+@media (min-width: 1026px) and (max-width: 1510px) {
+	.demographics-page {
+		--demographics-right-stack-left: var(--demographics-desktop-chart-left);
+		--demographics-right-stack-gap: 16px;
+		--demographics-right-total-width: calc(100vw - var(--demographics-desktop-gutter) - var(--demographics-right-stack-left));
+		--demographics-confidence-width: clamp(250px, 23vw, 340px);
+		--demographics-confidence-height: 386px;
+		--demographics-pie-fixed-width: 832px;
+		--demographics-pie-fixed-height: 387px;
+		--demographics-pie-width: calc(min(calc(var(--demographics-right-total-width) - var(--demographics-confidence-width) - var(--demographics-right-stack-gap)), calc(var(--demographics-desktop-chart-width) * 0.9)));
+	}
+
+	.demographics-page .race-thumbnail,
+	.demographics-page .age-thumbnail,
+	.demographics-page .sex-thumbnail {
+		left: var(--demographics-desktop-gutter);
+		width: var(--demographics-desktop-thumb-width);
+		height: auto;
+	}
+
+	.demographics-page .race-thumbnail {
+		top: 304px;
+	}
+
+	.demographics-page .age-thumbnail {
+		top: 416px;
+	}
+
+	.demographics-page .sex-thumbnail {
+		top: 528px;
+	}
+
+	.demographics-page .pie-graph {
+		top: 304px;
+		left: var(--demographics-right-stack-left);
+		width: var(--demographics-pie-width);
+		height: var(--demographics-pie-fixed-height);
+		transform: none;
+		overflow: hidden;
+	}
+
+	.demographics-page .pie-graph .pie-graph-image {
+		overflow: hidden;
+	}
+
+	.demographics-page .pie-graph .pie-graph-image svg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: var(--demographics-pie-fixed-width);
+		height: var(--demographics-pie-fixed-height);
+		max-width: none;
+	}
+
+	.demographics-page .ai-confidence {
+		top: 304px;
+		left: calc(var(--demographics-right-stack-left) + var(--demographics-pie-width) + var(--demographics-right-stack-gap));
+		right: auto;
+		width: calc(var(--demographics-right-total-width) - var(--demographics-pie-width) - var(--demographics-right-stack-gap));
+		height: var(--demographics-confidence-height);
+		transform: none;
+		overflow: auto;
+	}
+	}
+
 @media (max-width: 1025px) {
 	.demographics-page {
 		--demographics-stack-width: clamp(420px, 52vw, 500px);
